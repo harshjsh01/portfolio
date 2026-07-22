@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useBlogs, BlogPost } from '../hooks/useBlogs';
 
 const AdminBlog = () => {
+  useEffect(() => {
+    document.body.style.overflowY = "auto";
+  }, []);
   const { blogs, addBlog, updateBlog, deleteBlog } = useBlogs();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({ title: '', excerpt: '', content: '', imageUrl: '' });

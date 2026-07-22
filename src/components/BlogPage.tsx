@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useBlogs, BlogPost } from '../hooks/useBlogs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const BlogPage = () => {
+  useEffect(() => {
+    document.body.style.overflowY = "auto";
+  }, []);
   const { blogs } = useBlogs();
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
 
