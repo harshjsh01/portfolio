@@ -34,7 +34,13 @@ const imageUrls = [
   "/images/git.svg",
   "/images/linux.svg"
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+const textures = imageUrls.map((url) => {
+  const tex = textureLoader.load(url);
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(3, 3);
+  return tex;
+});
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
