@@ -6,6 +6,7 @@ const startups = [
   {
     id: "zenfine",
     name: "Zenfine",
+    logo: "/images/startups/zenfine.jpg",
     identity: "Deep-Tech, Hardware & AI Innovation Engine",
     items: [
       { title: "4G-to-5G Connectivity Modem", desc: "A cross-platform hardware solution bridging legacy networks to high-speed 5G" },
@@ -17,6 +18,7 @@ const startups = [
   {
     id: "ydix",
     name: "Y-dix",
+    logo: "/images/startups/ydix.png",
     identity: "Gen-Z Lifestyle & Augmented Reality (AR) Brand",
     items: [
       { title: "AR-Integrated Merchandise", desc: "Bridges the gap between physical lifestyle goods and digital interactive experiences using smartphone-triggered AR filters" },
@@ -26,6 +28,7 @@ const startups = [
   {
     id: "navra",
     name: "Navra Studio",
+    logo: "/images/startups/navra.png",
     identity: "Full-Stack Creative Agency & Software Development Studio",
     items: [
       { title: "Tech & AI Engineering", desc: "Custom web app development, custom AI/ML integration, and cloud backend solutions" },
@@ -58,7 +61,10 @@ const Startups = () => {
       <div className="startups-grid">
         {startups.map((startup) => (
           <div key={startup.id} className="startup-card">
-            <h2 className="startup-name">{startup.name}</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '0.5rem' }}>
+              {startup.logo && <img src={startup.logo} alt={`${startup.name} logo`} style={{ width: '60px', height: '60px', objectFit: 'contain', borderRadius: '8px' }} />}
+              <h2 className="startup-name" style={{ marginBottom: 0 }}>{startup.name}</h2>
+            </div>
             <div className="startup-identity">{startup.identity}</div>
             <div className="startup-details">
               <h3>Key Products & Initiatives</h3>
