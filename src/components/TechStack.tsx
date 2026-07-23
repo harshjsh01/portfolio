@@ -41,7 +41,7 @@ const spheres = [...Array(30)].map(() => ({
 }));
 
 const baseMaterial = new THREE.MeshPhysicalMaterial({
-  color: "#050505",
+  color: "#ffffff",
   metalness: 0.5,
   roughness: 1,
   clearcoat: 0.1,
@@ -122,9 +122,6 @@ function SphereGeo({
         >
           <meshPhysicalMaterial
             map={texture}
-            emissive="#ffffff"
-            emissiveMap={texture}
-            emissiveIntensity={0.5}
             transparent
             polygonOffset
             polygonOffsetFactor={-1}
