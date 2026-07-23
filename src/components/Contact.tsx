@@ -14,17 +14,11 @@ const Contact = () => {
                 harshjsh02@gmail.com
               </a>
             </p>
-            <h4>Phone</h4>
-            <p>
-              <a href="tel:+919462480988" data-cursor="disable">
-                +91 9462480988
-              </a>
-            </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com"
+              href="https://github.com/harshjsh01"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
@@ -32,7 +26,7 @@ const Contact = () => {
               Github <MdArrowOutward />
             </a>
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/harsh-joshi-zenfine/"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
