@@ -37,8 +37,11 @@ const imageUrls = [
 const textures = imageUrls.map((url) => {
   const tex = textureLoader.load(url);
   tex.wrapS = THREE.RepeatWrapping;
-  tex.wrapT = THREE.RepeatWrapping;
-  tex.repeat.set(3, 3);
+  tex.wrapT = THREE.ClampToEdgeWrapping;
+  // Repeat horizontally, but scale vertically to 50% and center it (offset by 25%)
+  // This keeps the texture away from the highly distorted poles!
+  tex.repeat.set(3, 0.5);
+  tex.offset.set(0, 0.25);
   return tex;
 });
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
