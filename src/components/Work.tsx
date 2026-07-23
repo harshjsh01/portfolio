@@ -83,7 +83,7 @@ const projects = [
     desc: "Early AI projects like Max and Baby (Python chatbots), and Timer Relay, an embedded systems project for Arduino.",
     tools: "Python, C++, Arduino",
     link: "https://github.com/harshjsh01",
-    image: "/images/projects/hardware.png"
+    image: "/images/projects/hardware.jpg"
   }
 ];
 
