@@ -89,11 +89,19 @@ const projects = [
 
 const Work = () => {
   useGSAP(() => {
+    const getScrollAmount = () => {
+      let totalWidth = 0;
+      document.querySelectorAll('.work-box').forEach(box => {
+        totalWidth += (box as HTMLElement).offsetWidth;
+      });
+      return totalWidth - window.innerWidth + 200;
+    };
+
     let timeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".work-section",
         start: "top top",
-        end: () => `+=${(document.querySelector(".work-flex") as HTMLElement)?.scrollWidth - window.innerWidth}`,
+        end: () => `+=${getScrollAmount()}`,
         scrub: true,
         pin: true,
         id: "work",
@@ -102,7 +110,7 @@ const Work = () => {
     });
 
     timeline.to(".work-flex", {
-      x: () => -((document.querySelector(".work-flex") as HTMLElement)?.scrollWidth - window.innerWidth),
+      x: () => -getScrollAmount(),
       ease: "none",
     });
 
