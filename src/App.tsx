@@ -6,6 +6,7 @@ const CharacterModel = lazy(() => import("./components/Character"));
 const MainContainer = lazy(() => import("./components/MainContainer"));
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const AdminBlog = lazy(() => import("./components/AdminBlog"));
+const Startups = lazy(() => import("./components/Startups"));
 import { LoadingProvider } from "./context/LoadingProvider";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
               </MainContainer>
             } />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/startups" element={<Startups />} />
             <Route path="/admin/blog" element={<AdminBlog />} />
           </Routes>
         </Suspense>

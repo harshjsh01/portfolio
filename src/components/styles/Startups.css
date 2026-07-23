@@ -1,0 +1,125 @@
+.startups-page {
+  padding: 5rem 2rem;
+  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: var(--font-primary, sans-serif);
+}
+
+.startups-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.startups-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.startups-title span {
+  color: #7b2cbf;
+  text-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
+}
+
+.startups-back-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+.startups-back-link:hover {
+  border-bottom-color: white;
+  letter-spacing: 1px;
+}
+
+.startups-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.startup-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.startup-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(123, 44, 191, 0.15) inset;
+  border-color: rgba(123, 44, 191, 0.4);
+}
+
+.startup-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #fff, #a2d2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.startup-identity {
+  font-size: 1.2rem;
+  color: #c8b6ff;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.startup-details h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.startup-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.startup-details li {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.startup-details li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #7b2cbf;
+  font-size: 1.2rem;
+}
+
+.startup-details li strong {
+  display: block;
+  font-size: 1.15rem;
+  color: #e0e1dd;
+  margin-bottom: 0.3rem;
+}
+
+.startup-details li span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.6;
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .startups-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

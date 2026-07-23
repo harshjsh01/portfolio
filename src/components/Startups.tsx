@@ -1,0 +1,81 @@
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import './styles/Startups.css';
+
+const startups = [
+  {
+    id: "zenfine",
+    name: "Zenfine",
+    identity: "Deep-Tech, Hardware & AI Innovation Engine",
+    items: [
+      { title: "4G-to-5G Connectivity Modem", desc: "A cross-platform hardware solution bridging legacy networks to high-speed 5G" },
+      { title: "Railway Twin", desc: "An AI-driven digital twin platform for real-time railway operations and transit optimization" },
+      { title: "Shadow Monarch", desc: "An autonomous multi-agent AI system for complex workflow orchestration" },
+      { title: "Dev Steno", desc: "A customized, cost-effective mechanical stenography keyboard" }
+    ]
+  },
+  {
+    id: "ydix",
+    name: "Y-dix",
+    identity: "Gen-Z Lifestyle & Augmented Reality (AR) Brand",
+    items: [
+      { title: "AR-Integrated Merchandise", desc: "Bridges the gap between physical lifestyle goods and digital interactive experiences using smartphone-triggered AR filters" },
+      { title: "Digital Platform", desc: "A high-performance digital storefront and brand platform built with Next.js and Python" }
+    ]
+  },
+  {
+    id: "navra",
+    name: "Navra Studio",
+    identity: "Full-Stack Creative Agency & Software Development Studio",
+    items: [
+      { title: "Tech & AI Engineering", desc: "Custom web app development, custom AI/ML integration, and cloud backend solutions" },
+      { title: "Digital Growth & Media", desc: "End-to-end social media handling, campaign strategy, and video production" },
+      { title: "Featured Client Work", desc: "Complete brand identity and storefront maintenance for luxury brands like Veltrix Grace and heritage jewelers" }
+    ]
+  },
+  {
+    id: "eco",
+    name: "Eco Initiative: Sustainable Gaushala Project",
+    identity: "Self-Sustaining Agriculture & Conservation Sanctuary (Jaipur)",
+    items: [
+      { title: "Key Focus", desc: "A social impact project operating on an eco-friendly, circular business model powered by organic bi-products like vermicompost and bio-gas" }
+    ]
+  }
+];
+
+const Startups = () => {
+  useEffect(() => {
+    document.body.style.overflowY = "auto";
+  }, []);
+
+  return (
+    <div className="startups-page">
+      <div className="startups-header">
+        <h1 className="startups-title">My <span>Startups</span></h1>
+        <Link to="/" className="startups-back-link">Back to Portfolio</Link>
+      </div>
+
+      <div className="startups-grid">
+        {startups.map((startup) => (
+          <div key={startup.id} className="startup-card">
+            <h2 className="startup-name">{startup.name}</h2>
+            <div className="startup-identity">{startup.identity}</div>
+            <div className="startup-details">
+              <h3>Key Products & Initiatives</h3>
+              <ul>
+                {startup.items.map((item, index) => (
+                  <li key={index}>
+                    <strong>{item.title}</strong>
+                    <span>{item.desc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Startups;
