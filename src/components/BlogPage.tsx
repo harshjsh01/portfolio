@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useBlogs, BlogPost } from '../hooks/useBlogs';
+import { useState, useEffect } from 'react';
 import Contact from './Contact';
 import BackgroundBlobs from './BackgroundBlobs';
 

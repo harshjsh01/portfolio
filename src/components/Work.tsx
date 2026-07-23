@@ -89,18 +89,6 @@ const projects = [
 
 const Work = () => {
   useGSAP(() => {
-    let translateX: number = 0;
-
-    function setTranslateX() {
-      const flexContainer = document.querySelector(".work-flex") as HTMLElement;
-      if (flexContainer) {
-        // Use scrollWidth to accurately get the true width of the flex container, minus the viewport width
-        translateX = flexContainer.scrollWidth - window.innerWidth;
-      }
-    }
-
-    setTranslateX();
-
     let timeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".work-section",
