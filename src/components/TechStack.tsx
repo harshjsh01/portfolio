@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Environment, Decal } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
   BallCollider,
@@ -34,26 +34,24 @@ const imageUrls = [
   "/images/git.svg",
   "/images/linux.svg"
 ];
-const textures = imageUrls.map((url) => {
-  const tex = textureLoader.load(url);
-  tex.wrapS = THREE.RepeatWrapping;
-  tex.wrapT = THREE.ClampToEdgeWrapping;
-  // Repeat horizontally, but scale vertically to 50% and center it (offset by 25%)
-  // This keeps the texture away from the highly distorted poles!
-  tex.repeat.set(3, 0.5);
-  tex.offset.set(0, 0.25);
-  return tex;
-});
+const textures = imageUrls.map((url) => textureLoader.load(url));
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
+const baseMaterial = new THREE.MeshPhysicalMaterial({
+  color: "#050505",
+  metalness: 0.5,
+  roughness: 1,
+  clearcoat: 0.1,
+});
+
 type SphereProps = {
   vec?: THREE.Vector3;
   scale: number;
   r?: typeof THREE.MathUtils.randFloatSpread;
-  material: THREE.MeshPhysicalMaterial;
+  texture: THREE.Texture;
   isActive: boolean;
 };
 
@@ -61,7 +59,7 @@ function SphereGeo({
   vec = new THREE.Vector3(),
   scale,
   r = THREE.MathUtils.randFloatSpread,
-  material,
+  texture,
   isActive,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
@@ -102,9 +100,37 @@ function SphereGeo({
         receiveShadow
         scale={scale}
         geometry={sphereGeometry}
-        material={material}
+        material={baseMaterial}
         rotation={[0.3, 1, 1]}
-      />
+      >
+        <Decal
+          position={[0, 0, 1]}
+          rotation={[0, 0, 0]}
+          scale={1.2}
+        >
+          <meshPhysicalMaterial
+            map={texture}
+            transparent
+            polygonOffset
+            polygonOffsetFactor={-1}
+          />
+        </Decal>
+        <Decal
+          position={[0, 0, -1]}
+          rotation={[0, Math.PI, 0]}
+          scale={1.2}
+        >
+          <meshPhysicalMaterial
+            map={texture}
+            emissive="#ffffff"
+            emissiveMap={texture}
+            emissiveIntensity={0.5}
+            transparent
+            polygonOffset
+            polygonOffsetFactor={-1}
+          />
+        </Decal>
+      </mesh>
     </RigidBody>
   );
 }
@@ -216,20 +242,7 @@ const TechStack = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const materials = useMemo(() => {
-    return textures.map(
-      (texture) =>
-        new THREE.MeshPhysicalMaterial({
-          map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
-        })
-    );
-  }, []);
+  // We no longer need the materials array since we pass the texture directly to the SphereGeo for Decal mapping
 
   return (
     <div style={{ width: '100%', position: 'relative', display: 'flex', flexDirection: 'column' }}>
@@ -262,7 +275,7 @@ const TechStack = () => {
           <Physics gravity={[0, 0, 0]}>
             <Pointer isActive={isActive} />
             {spheres.map((props, i) => (
-              <SphereGeo key={i} {...props} material={materials[Math.floor(Math.random() * materials.length)]} isActive={isActive} />
+              <SphereGeo key={i} {...props} texture={textures[Math.floor(Math.random() * textures.length)]} isActive={isActive} />
             ))}
           </Physics>
           <Environment files="/models/char_enviorment.hdr" environmentIntensity={0.5} environmentRotation={[0, 4, 2]} />
