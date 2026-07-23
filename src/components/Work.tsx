@@ -13,7 +13,8 @@ const projects = [
     subtitle: "DTC platform with WebAR",
     desc: "A Gen Z-inspired e-commerce platform built for selling Augmented Reality frames. Features Mind-AR, Three.js, and a custom zero-fee Dynamic UPI Payment Bridge.",
     tools: "Next.js 15, TypeScript, Tailwind CSS, Framer Motion",
-    link: "https://github.com/harshjsh01/ydix-web"
+    link: "https://github.com/harshjsh01/ydix-web",
+    image: "/images/projects/ydix.png"
   },
   {
     id: "02",
@@ -21,7 +22,8 @@ const projects = [
     subtitle: "Productivity Lockdown Suite",
     desc: "A cross-platform productivity app gamified with 'Solo Leveling' mechanics. Uses Gemini API as an AI Content Engine to block distractions.",
     tools: "Gemini API, Supabase, Android, Resend API",
-    link: "https://github.com/harshjsh01/shadowmonarch"
+    link: "https://github.com/harshjsh01/shadowmonarch",
+    image: "/images/projects/focuswarden.png"
   },
   {
     id: "03",
@@ -29,7 +31,8 @@ const projects = [
     subtitle: "Cost Intelligence Tool",
     desc: "An enterprise-grade, API-first costing management app. Features an AI CFO Chatbot built with LangChain and RAG for instant variance reports.",
     tools: "Python, FastAPI, Pandas, Electron, React, Tailwind",
-    link: "https://github.com/harshjsh01/costing-software"
+    link: "https://github.com/harshjsh01/costing-software",
+    image: "/images/projects/zenfine.png"
   },
   {
     id: "04",
@@ -45,7 +48,8 @@ const projects = [
     subtitle: "Event Management Portal",
     desc: "A full-stack ticket management and validation system used for large-scale college events featuring unique UUID QR codes and real-time database checks.",
     tools: "Google Forms, Apps Script, Next.js, Supabase, Firebase",
-    link: "https://github.com/harshjsh01/farewell2026"
+    link: "https://github.com/harshjsh01/farewell2026",
+    image: "/images/projects/farewell.png"
   },
   {
     id: "06",
@@ -77,7 +81,8 @@ const projects = [
     subtitle: "Foundational Projects",
     desc: "Early AI projects like Max and Baby (Python chatbots), and Timer Relay, an embedded systems project for Arduino.",
     tools: "Python, C++, Arduino",
-    link: "https://github.com/harshjsh01"
+    link: "https://github.com/harshjsh01",
+    image: "/images/projects/hardware.png"
   }
 ];
 
@@ -154,7 +159,7 @@ const Work = () => {
                   <p style={{ fontSize: '1rem', fontWeight: 500 }}>{project.tools}</p>
                 </div>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt={project.title} link={project.link} />
+              <WorkImage image={project.image || "/images/placeholder.webp"} alt={project.title} link={project.link} />
             </a>
           ))}
         </div>
