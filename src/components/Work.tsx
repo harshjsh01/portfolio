@@ -61,7 +61,7 @@ const projects = [
     subtitle: "Open Source Contribution",
     desc: "Forked and contributed to a full-stack FAQ portal designed to handle 1 million registered users with semantic vector search.",
     tools: "TypeScript, Vector Search, AI Moderation",
-    link: "https://github.com/harshjsh01/crowd-source-faq"
+    link: "https://github.com/vicharanashala/cs5"
   },
   {
     id: "08",
