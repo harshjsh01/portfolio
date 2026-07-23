@@ -92,15 +92,11 @@ const Work = () => {
     let translateX: number = 0;
 
     function setTranslateX() {
-      const box = document.getElementsByClassName("work-box");
-      const rectLeft = document
-        .querySelector(".work-container")!
-        .getBoundingClientRect().left;
-      const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-      let padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
+      const flexContainer = document.querySelector(".work-flex") as HTMLElement;
+      if (flexContainer) {
+        // Use scrollWidth to accurately get the true width of the flex container, minus the viewport width
+        translateX = flexContainer.scrollWidth - window.innerWidth;
+      }
     }
 
     setTranslateX();
@@ -109,15 +105,16 @@ const Work = () => {
       scrollTrigger: {
         trigger: ".work-section",
         start: "top top",
-        end: `+=${translateX}`, // Use actual scroll width
+        end: () => `+=${(document.querySelector(".work-flex") as HTMLElement)?.scrollWidth - window.innerWidth}`,
         scrub: true,
         pin: true,
         id: "work",
+        invalidateOnRefresh: true,
       },
     });
 
     timeline.to(".work-flex", {
-      x: -translateX,
+      x: () => -((document.querySelector(".work-flex") as HTMLElement)?.scrollWidth - window.innerWidth),
       ease: "none",
     });
 

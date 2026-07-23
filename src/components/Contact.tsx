@@ -5,7 +5,8 @@ const Contact = () => {
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
-        <h3>Contact</h3>
+        <h3 className="contact-title">Let's <span>Connect</span></h3>
+        <p style={{ opacity: 0.6, marginBottom: '3rem', fontSize: '1.2rem', marginTop: '-1rem' }}>Have a project in mind or just want to say hi? Drop me an email.</p>
         <div className="contact-flex">
           <div className="contact-box">
             <h4>Email</h4>

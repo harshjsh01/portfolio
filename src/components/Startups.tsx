@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import './styles/Startups.css';
 import Contact from './Contact';
+import BackgroundBlobs from './BackgroundBlobs';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -60,13 +61,6 @@ const Startups = () => {
   }, []);
 
   useGSAP(() => {
-    gsap.to(".startup-blob-1", {
-      x: "50vw", y: "20vh", duration: 15, repeat: -1, yoyo: true, ease: "sine.inOut"
-    });
-    gsap.to(".startup-blob-2", {
-      x: "-50vw", y: "-20vh", duration: 18, repeat: -1, yoyo: true, ease: "sine.inOut"
-    });
-
     gsap.from(".startup-card", {
       y: 100,
       opacity: 0,
@@ -90,8 +84,7 @@ const Startups = () => {
 
   return (
     <div className="startups-page" ref={containerRef}>
-      <div className="startup-blob-1"></div>
-      <div className="startup-blob-2"></div>
+      <BackgroundBlobs />
       
       <div className="startups-content">
         <div className="startups-header">

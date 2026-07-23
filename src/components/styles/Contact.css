@@ -3,11 +3,16 @@
   padding-bottom: 100px;
   margin-top: 100px;
 }
-.contact-section h3 {
+.contact-section h3.contact-title {
   font-size: 60px;
   font-weight: 400;
   text-transform: uppercase;
   margin: 0;
+}
+.contact-section h3.contact-title span {
+  background: linear-gradient(90deg, var(--accentColor), #4cc9f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .contact-flex {
   display: flex;
@@ -47,7 +52,7 @@ a.contact-social {
   opacity: 0.5;
 }
 @media only screen and (max-width: 1600px) {
-  .contact-section h3 {
+  .contact-section h3.contact-title {
     font-size: 50px;
   }
   .contact-box h2 {
@@ -58,7 +63,7 @@ a.contact-social {
   }
 }
 @media only screen and (max-width: 1300px) {
-  .contact-section h3 {
+  .contact-section h3.contact-title {
     font-size: 40px;
   }
   .contact-box h2 {
