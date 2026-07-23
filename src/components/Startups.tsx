@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import './styles/Startups.css';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const startups = [
   {
@@ -47,13 +52,48 @@ const startups = [
 ];
 
 const Startups = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.style.overflowY = "auto";
   }, []);
 
+  useGSAP(() => {
+    gsap.to(".startup-blob-1", {
+      x: "50vw", y: "20vh", duration: 15, repeat: -1, yoyo: true, ease: "sine.inOut"
+    });
+    gsap.to(".startup-blob-2", {
+      x: "-50vw", y: "-20vh", duration: 18, repeat: -1, yoyo: true, ease: "sine.inOut"
+    });
+
+    gsap.from(".startup-card", {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".startups-grid",
+        start: "top 85%",
+      }
+    });
+
+    gsap.from(".startups-title span", {
+      scale: 0.8,
+      opacity: 0,
+      duration: 1.5,
+      ease: "elastic.out(1, 0.3)",
+      delay: 0.2
+    });
+  }, { scope: containerRef });
+
   return (
-    <div className="startups-page">
-      <div className="startups-header">
+    <div className="startups-page" ref={containerRef}>
+      <div className="startup-blob-1"></div>
+      <div className="startup-blob-2"></div>
+      
+      <div className="startups-content">
+        <div className="startups-header">
         <h1 className="startups-title">My <span>Startups</span></h1>
         <Link to="/" className="startups-back-link">Back to Portfolio</Link>
       </div>
@@ -79,6 +119,7 @@ const Startups = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
