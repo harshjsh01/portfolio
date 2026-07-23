@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useBlogs, BlogPost } from '../hooks/useBlogs';
 import { useState, useEffect } from 'react';
+import Contact from './Contact';
 
 const BlogPage = () => {
   useEffect(() => {
@@ -18,6 +19,9 @@ const BlogPage = () => {
         <p style={{ opacity: 0.7, marginBottom: '2rem' }}>{new Date(selectedBlog.date).toLocaleDateString()}</p>
         <div style={{ lineHeight: '1.8', fontSize: '1.2rem', whiteSpace: 'pre-wrap' }}>
           {selectedBlog.content}
+        </div>
+        <div style={{ marginTop: '5rem' }}>
+          <Contact />
         </div>
       </div>
     );
@@ -40,6 +44,9 @@ const BlogPage = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div style={{ marginTop: '5rem' }}>
+        <Contact />
       </div>
     </div>
   );

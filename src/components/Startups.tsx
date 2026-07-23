@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import './styles/Startups.css';
+import Contact from './Contact';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -120,6 +121,9 @@ const Startups = () => {
           </div>
         ))}
       </div>
+      </div>
+      <div style={{ marginTop: '5rem', position: 'relative', zIndex: 10 }}>
+        <Contact />
       </div>
     </div>
   );

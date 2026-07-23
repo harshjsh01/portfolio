@@ -10,6 +10,22 @@ export function initialFX() {
     delay: 1,
   });
 
+  gsap.fromTo(
+    [".header", ".icons-section", ".nav-fade"],
+    { opacity: 0 },
+    {
+      opacity: 1,
+      duration: 1.2,
+      ease: "power1.inOut",
+      delay: 0.1,
+    }
+  );
+
+  playLandingAnimation();
+  (window as any).initialFXRan = true;
+}
+
+export function playLandingAnimation() {
   var landingText = new SplitType(
     ".landing-info h3, .landing-intro h2, .landing-intro h1",
     {
@@ -57,16 +73,6 @@ export function initialFX() {
       ease: "power1.inOut",
       y: 0,
       delay: 0.8,
-    }
-  );
-  gsap.fromTo(
-    [".header", ".icons-section", ".nav-fade"],
-    { opacity: 0 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power1.inOut",
-      delay: 0.1,
     }
   );
 

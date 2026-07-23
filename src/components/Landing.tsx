@@ -1,7 +1,14 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import "./styles/Landing.css";
+import { playLandingAnimation } from "./utils/initialFX";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  useEffect(() => {
+    if ((window as any).initialFXRan) {
+      playLandingAnimation();
+    }
+  }, []);
+
   return (
     <>
       <div className="landing-section" id="landingDiv">
