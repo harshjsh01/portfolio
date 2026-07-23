@@ -37,7 +37,7 @@ const imageUrls = [
 const textures = imageUrls.map((url) => textureLoader.load(url));
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 const spheres = [...Array(30)].map(() => ({
-  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+  scale: [1.1, 1.5, 1.2, 1.5, 1.5][Math.floor(Math.random() * 5)],
 }));
 
 const baseMaterial = new THREE.MeshPhysicalMaterial({
